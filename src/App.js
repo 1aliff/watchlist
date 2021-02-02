@@ -29,7 +29,6 @@ const App = () => {
   }
 
   return (
-    // <GlobalProvider>
       <div>
         <Navbar />
         <SearchBar 
@@ -37,7 +36,6 @@ const App = () => {
           movies={result}
         />
       </div>
-    // </GlobalProvider>
   )
 }
 
