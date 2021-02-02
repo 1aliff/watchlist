@@ -12,7 +12,7 @@ const App = () => {
               <Route exact path="/">
                 <Homepage />
               </Route>
-              <Route exact path="/wishlist">
+              <Route exact path="/watchlist">
                 <WishLists />
               </Route>
               <Route exact path="/watched">
