@@ -1,6 +1,8 @@
-import React from 'react'
-import { Input, Grid, Card, CardContent, Typography, CardMedia } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import getData from '../../api/index'
+import { Input, Grid } from '@material-ui/core'
+
 import MovieCard from '../MovieLists/MovieCard'
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 0 auto',
   },
   cover: {
-    // height: 200,
     width: 150,
   },
   searchBar: {
@@ -29,18 +30,36 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '20px', // for placeholder
     width: '100%',
     height: '60px',
-    marginBottom: 20, // between searchbox and chips
     color: 'black',
     background: '#eee',
     borderRadius: '10px',
   },
+  searchWrapper: {
+    padding: 10,
+    width: '80%',
+    margin: 'auto',
+  }
 }));
 
-const SearchBar = ({ handleChange, movies }) => {
+const Homepage = () => {
   const classes = useStyles();
+  const [query, setQuery] = useState('')
+  const [result, setResult] = useState([])
 
+  useEffect(() => {
+    fetchData()
+  }, [query])
+
+  const fetchData = async () => {
+    if (query === '') return
+    let { results } = await getData(query);
+    setResult(results)
+  }
+
+  const handleChange = e => setQuery(e.target.value)
+  
   return (
-    <>
+    <div className={classes.searchWrapper}>
       <div className={classes.searchBar}>
         <form autoComplete="off">
             <Input
@@ -49,16 +68,24 @@ const SearchBar = ({ handleChange, movies }) => {
               placeholder="Search movie to watch"
               onChange={handleChange}
             />
-          </form>
-        </div>
-            {
-              movies.map((movie) => (
-                <MovieCard 
-                  movie={movie}
-                />
-              ))
-            }        
-    </>
+        </form>
+      </div>
+        <Grid
+          container
+          justify="center"
+          spacing={3}
+          direction="row"
+        >
+          {
+            result.map((movie) => (
+              <MovieCard 
+                movie={movie}
+              />
+            ))
+          }
+          </Grid>
+    </div>
   )
 }
-export default SearchBar
+
+export default Homepage

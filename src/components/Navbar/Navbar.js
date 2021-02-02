@@ -1,17 +1,19 @@
 import React from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-
+import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: 'none',
+    color: '#fff',
+    margin: 10
+  }
 }));
 
 const Navbar = () => {
@@ -22,10 +24,10 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            WatchList
+            <Link to="/" className={classes.link}>Watchlist</Link>
           </Typography>
-          <Button color="inherit">My Watch List</Button> |
-          <Button color="inherit">Watched</Button>
+          <Link to="/wishlist" className={classes.link}>My Watch List</Link> |
+          <Link to="/watched" className={classes.link}>Watched</Link>
         </Toolbar>
       </AppBar>
     </>

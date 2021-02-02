@@ -1,40 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import getData from './api/index'
-import Navbar from './components/Navbar/Navbar'
-import SearchBar from './components/Searchbar/SearchBar'
-
+import React from 'react';
+import { Navbar, WatchedLists, WishLists, Homepage } from './components/index'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // import { GlobalProvider } from './_context/GlobalState'
 
-import './App.css';
-
 const App = () => {
-  const [query, setQuery] = useState('')
-  const [result, setResult] = useState([])
-
-  console.log('current state query', query)
-  
-  useEffect(() => {
-    fetchData()
-  }, [query])
-
-  const fetchData = async () => {
-    if (query === '') return
-    let { results } = await getData(query);
-    setResult(results)
-  }
-
-  const handleChange = e => {
-    e.preventDefault();
-    setQuery(e.target.value)
-  }
-
   return (
-      <div>
-        <Navbar />
-        <SearchBar 
-          handleChange={handleChange}
-          movies={result}
-        />
+      <div className="App">
+        <Router>
+          <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <Homepage />
+              </Route>
+              <Route exact path="/wishlist">
+                <WishLists />
+              </Route>
+              <Route exact path="/watched">
+                <WatchedLists />
+              </Route>
+            </Switch>
+        </Router>
       </div>
   )
 }
