@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input, Grid, Card, CardContent, Typography, CardMedia } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import MovieCard from './MovieCard'
+import MovieCard from '../MovieLists/MovieCard'
 
 const useStyles = makeStyles((theme) => ({
   root : {

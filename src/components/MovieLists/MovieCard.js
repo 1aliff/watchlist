@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieCard = ({ movie }) => {
   const classes = useStyles();
-  // const [saved, setSaved] = useState(false)
 
   return (
     <Grid
       container
       justify="center"
       spacing={4}
+      direction="row"
     >
       <Grid item spacing={3}>
         <Card className={classes.root}>
@@ -45,7 +45,7 @@ const MovieCard = ({ movie }) => {
                     <Typography gutterBottom variant="h7" component="h2" align="center">
                       {movie.release_date}
                     </Typography>
-                    <Button onClick={() => console.log('add to wishlist')}>WATCH LIST</Button>
+                    <Button onClick={() => console.log('add to wishlist')}>ADD TO LIST</Button>
                     <Button onClick={() => console.log('add to watched')}>WATCHED</Button>
                 </CardActionArea>
             </Card>

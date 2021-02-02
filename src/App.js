@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getData from './api/index'
-import Navbar from './components/Navbar'
-import SearchBar from './components/SearchBar'
+import Navbar from './components/Navbar/Navbar'
+import SearchBar from './components/Searchbar/SearchBar'
 
 // import { GlobalProvider } from './_context/GlobalState'
 
