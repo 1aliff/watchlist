@@ -1,0 +1,13 @@
+ACTION REQUIRED
+
+SEARCH MOVIE
++ search movie -> state
++ Add to WISHLIST -> state
+
+WISHLIST
++ Remove movie from withlist state
++ Mark as watched -> state
+
+WATCHED
++ retrieve watched state
++ remove movie
