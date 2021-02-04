@@ -1,16 +1,21 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useEffect } from 'react'
 import AppReducer from './Reducers'
 
 const initialState = {
-  watchlists : [],
-  seenlists: [],
+  watchlists : localStorage.getItem("watchlists") ? JSON.parse(localStorage.getItem("watchlists")) : [],
+  seenlists: localStorage.getItem("seenlists") ? JSON.parse(localStorage.getItem("seenlists")) : [],
 }
 
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  // 'Set' our localStorage when mounted -> re-mount everytime state changes
+  useEffect(() => {
+    localStorage.setItem("watchlists", JSON.stringify(state.watchlists))
+    localStorage.setItem("seenlists", JSON.stringify(state.seenlists))
+  }, [state])
 
   // watchlist section
    const addToWatchList = (movie) => {
