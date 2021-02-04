@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { Input, Grid, Typography } from '@material-ui/core'
+import { GlobalContext } from '../../_context/GlobalState'
 import getData from '../../api/index'
-import { Input, Grid } from '@material-ui/core'
 
 import MovieCard from './MovieLists/MovieCard'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root : {
     display: 'flex'
   },
@@ -45,21 +46,28 @@ const Homepage = () => {
   const classes = useStyles();
   const [query, setQuery] = useState('')
   const [result, setResult] = useState([])
-
+  const { watchlists } = useContext(GlobalContext)
+  
   useEffect(() => {
     fetchData()
   }, [query])
-
+  
   const fetchData = async () => {
     if (query === '') return
     let { results } = await getData(query);
     setResult(results)
   }
-
+  
   const handleChange = e => setQuery(e.target.value)
   
+  let headerTypography
+  watchlists.length === 0 
+    ? headerTypography = 'I know you are busy, add something to create your list and maybe watch it later 🙂' 
+      : headerTypography = 'Great, add more. 😁'
+
   return (
     <div className={classes.searchWrapper}>
+      <Typography variant="h4" component="h3" style={{ opacity: 0.5, align: 'center', marginTop: 25 }} align="center">{headerTypography}</Typography>
       <div className={classes.searchBar}>
         <form autoComplete="off">
             <Input

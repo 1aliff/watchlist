@@ -4,7 +4,7 @@ import { Grid, Button, Card, Typography, CardMedia } from '@material-ui/core'
 
 import { GlobalContext } from '../../../_context/GlobalState'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: 280,
     height: 515,
@@ -19,14 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   addList: {
     color: '#fff',
-    backgroundColor: '#0099ff',
+    backgroundColor: '#CD6155',
     margin: 5
   },
-  addWatched: {
-    color: '#fff',
-    backgroundColor: '#006bb3',
-    margin: 5
-  }
 }));
 
 const MovieCard = ({ movie }) => {
@@ -50,8 +45,7 @@ const MovieCard = ({ movie }) => {
               </Typography>
           {/* </CardActionArea> */}
           <div align="center">
-            <Button variant="contained" className={classes.addList} onClick={() => addToWatchList(movie)}>ADD TO WATCH LIST</Button>
-            {/* <Button variant="contained" className={classes.addWatched} onClick={() => console.log('add to watched')}>WATCHED</Button> */}
+            <Button variant="contained" className={classes.addList} onClick={() => addToWatchList(movie)}>ADD TO MY WATCH LIST</Button>
           </div>
         </Card>
       </Grid>

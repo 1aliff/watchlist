@@ -16,14 +16,14 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
     fontSize: 16,
   },
-  addList: {
+  seenIt: {
     color: '#fff',
-    backgroundColor: '#0099ff',
+    backgroundColor: '#CD6155',
     margin: 5
   },
-  addWatched: {
+  deleteIt: {
     color: '#fff',
-    backgroundColor: '#006bb3',
+    backgroundColor: '#922B21',
     margin: 5
   }
 }));
@@ -50,8 +50,8 @@ const WatchListsCard = ({ watchlist }) => {
               </Typography>
           {/* </CardActionArea> */}
           <div align="center">
-            <Button variant="contained" className={classes.addList} onClick={() => addToSeenList(watchlist)}>SEEN</Button>
-            <Button variant="contained" className={classes.addWatched} onClick={() => deleteWatchList(watchlist.id)}>DELETE</Button>
+            <Button variant="contained" className={classes.seenIt} onClick={() => addToSeenList(watchlist)}>MARK AS SEEN</Button>
+            <Button variant="contained" className={classes.deleteIt} onClick={() => deleteWatchList(watchlist.id)}>DELETE</Button>
           </div>
         </Card>
      </Grid>

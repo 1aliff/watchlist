@@ -16,14 +16,9 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
     fontSize: 16,
   },
-  addList: {
+  deleted: {
     color: '#fff',
-    backgroundColor: '#0099ff',
-    margin: 5
-  },
-  addWatched: {
-    color: '#fff',
-    backgroundColor: '#006bb3',
+    backgroundColor: '#922B21',
     margin: 5
   }
 }));
@@ -48,7 +43,7 @@ const SeenListsCard = ({ seenlists }) => {
                 {seenlists.release_date}
               </Typography>
           <div align="center">
-            <Button variant="contained" className={classes.addWatched} onClick={() => deleteSeenList(seenlists.id)}>DELETE</Button>
+            <Button variant="contained" className={classes.deleted} onClick={() => deleteSeenList(seenlists.id)}>DELETE</Button>
           </div>
         </Card>
      </Grid>
