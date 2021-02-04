@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Grid, CardActions, Button, Card, CardActionArea, Typography, CardMedia } from '@material-ui/core'
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import React, { useContext } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Button, Card, Typography, CardMedia } from '@material-ui/core'
+
+import { GlobalContext } from '../../../_context/GlobalState'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieCard = ({ movie }) => {
   const classes = useStyles();
+  const { addToWatchList } = useContext(GlobalContext) // take out our add function
 
   return (
       <Grid item spacing={4}>
@@ -49,7 +50,7 @@ const MovieCard = ({ movie }) => {
               </Typography>
           {/* </CardActionArea> */}
           <div align="center">
-            <Button variant="contained" className={classes.addList} onClick={() => console.log('add to wishlist')}>ADD</Button>
+            <Button variant="contained" className={classes.addList} onClick={() => addToWatchList(movie)}>ADD</Button>
             <Button variant="contained" className={classes.addWatched} onClick={() => console.log('add to watched')}>WATCHED</Button>
           </div>
         </Card>

@@ -1,30 +1,32 @@
-// import React, { createContext, useProvider } from 'react'
-// import AppReducer from './Reducers'
+import React, { createContext, useReducer } from 'react'
+import AppReducer from './Reducers'
 
 // // 1. initial State
-// const initialState = {
-//   query : '',
-//   data : [],
+const initialState = {
+  watchlists : [],
+}
 
-// }
+export const GlobalContext = createContext(initialState);
 
-// // 2. create context -> pass initalState
-// export const globalState = createContext(initialState)
+export const GlobalProvider = ({ children }) => {
+  
+  const [state, dispatch] = useReducer(AppReducer, initialState);
 
-// // 3. create globalProvider
-// // 3.1 create provider
-// export const globalProvider = () => {
+  function addToWatchList (movie) {
+    dispatch ({
+      type: 'ADD_TO_WATCHLIST',
+      payload: movie
+    })
+  }
 
-//   const [state, dispatch ]= useProvider(AppReducer, initialState)
-
-//   // 3.2 create so called 'Action' -> dispatch {{ type, payload }}
-
-
-//   return (
-//     <GlobalContext.Provider
-//       // value={{      }}
-//     >
-//       {children}
-//     </GlobalContext.Provider>
-//   )
-// }
+  return (
+    <GlobalContext.Provider
+      value={{
+        watchlists: state.watchlists,
+        addToWatchList
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  )
+}

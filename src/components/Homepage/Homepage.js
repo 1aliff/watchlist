@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import getData from '../../api/index'
 import { Input, Grid } from '@material-ui/core'
 
-import MovieCard from '../MovieLists/MovieCard'
+import MovieCard from './MovieLists/MovieCard'
 
 const useStyles = makeStyles((theme) => ({
   root : {
