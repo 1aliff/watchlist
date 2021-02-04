@@ -1,4 +1,4 @@
 export { default as Homepage } from './Homepage/Homepage'
 export { default as Navbar } from './Navbar/Navbar'
-export { default as WishLists } from './WishLists/Wishlist'
-export { default as WatchedLists } from './WatchedLists/Watched'
+export { default as WatchLists } from './WatchLists/WatchLists'
+export { default as SeenLists } from './SeenLists/SeenLists'

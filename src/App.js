@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, WatchedLists, WishLists, Homepage } from './components/index'
+import { Navbar, SeenLists, WatchLists, Homepage } from './components/index'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { GlobalProvider } from './_context/GlobalState'
 
@@ -14,10 +14,10 @@ const App = () => {
                   <Homepage />
                 </Route>
                 <Route exact path="/watchlist">
-                  <WishLists />
+                  <WatchLists />
                 </Route>
-                <Route exact path="/watched">
-                  <WatchedLists />
+                <Route exact path="/seenlist">
+                  <SeenLists />
                 </Route>
               </Switch>
           </Router>

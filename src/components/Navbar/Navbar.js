@@ -1,7 +1,8 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -27,7 +28,7 @@ const Navbar = () => {
             <NavLink to="/" className={classes.link}>Watchlist</NavLink>
           </Typography>
           <NavLink to="/watchlist" className={classes.link} activeStyle={{ fontWeight: '900' }}>My Watchlist</NavLink> |
-          <NavLink to="/watched" className={classes.link} activeStyle={{ fontWeight: '900' }}>Watched</NavLink>
+          <NavLink to="/seenlist" className={classes.link} activeStyle={{ fontWeight: '900' }}>Seen</NavLink>
         </Toolbar>
       </AppBar>
     </>

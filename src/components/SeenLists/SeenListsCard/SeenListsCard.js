@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
+import { Grid, Card, CardMedia, Typography, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Button, Card, Typography, CardMedia } from '@material-ui/core'
+import { GlobalContext } from '../../../_context/GlobalState.js'
 
-import { GlobalContext } from '../../../_context/GlobalState'
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: 280,
     height: 515,
@@ -29,33 +28,32 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const MovieCard = ({ movie }) => {
-  const classes = useStyles();
-  const { addToWatchList } = useContext(GlobalContext) // take out our add function
+const SeenListsCard = ({ seenlists }) => {
+  const classes = useStyles()
+  const { deleteSeenList } = useContext(GlobalContext)
 
   return (
+    <>
       <Grid item spacing={4}>
         <Card className={classes.root}>
-          {/* <CardActionArea> */}
               <CardMedia
                   className={classes.media}
-                  image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  title={`Photo By ${movie.original_title}`}
+                  image={`https://image.tmdb.org/t/p/w200${seenlists.poster_path}`}
+                  title={`Photo By ${seenlists.original_title}`}
               />
               <Typography gutterBottom variant="h6" component="h2" align="center" className={classes.cardInfo}>
-                {movie.original_title}
+                {seenlists.original_title}
               </Typography>
               <Typography gutterBottom variant="h7" component="h2" align="center" className={classes.cardInfo}>
-                {movie.release_date}
+                {seenlists.release_date}
               </Typography>
-          {/* </CardActionArea> */}
           <div align="center">
-            <Button variant="contained" className={classes.addList} onClick={() => addToWatchList(movie)}>ADD TO WATCH LIST</Button>
-            {/* <Button variant="contained" className={classes.addWatched} onClick={() => console.log('add to watched')}>WATCHED</Button> */}
+            <Button variant="contained" className={classes.addWatched} onClick={() => deleteSeenList(seenlists.id)}>DELETE</Button>
           </div>
         </Card>
-      </Grid>
+     </Grid>
+    </>
   )
 }
 
-export default MovieCard
+export default SeenListsCard
