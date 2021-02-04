@@ -5,7 +5,7 @@
 Build this project to learn more about React Context API, together with localStorage. Means you should be able to get your state back whenever the page reload ;)
 
 # Feature
-- Create a Movie List to watched (Add to my list functionality)
+- Create a Movie List to watch (Add to watch later type functionality)
 - saved state to your localStorage functionality
 
 # Dependencies
