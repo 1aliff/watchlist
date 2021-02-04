@@ -13,6 +13,7 @@ export default (state, action) => {
     case 'ADD_TO_SEEN_LIST' :
       return {
         ...state,
+        watchlists: state.watchlists.filter(watchlist => watchlist.id !== action.payload.id),
         seenlists: [action.payload, ...state.seenlists]
       }
     case 'DELETE_SEEN_LIST' :
